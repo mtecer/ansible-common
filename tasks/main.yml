@@ -1,0 +1,16 @@
+---
+- name: Disable SELinux
+    selinux:
+    state: {{ selinux_state }}
+
+- name: Install common packages
+    package:
+    name:   "{{ item }}"
+    state:  present
+    with_items:
+    - git
+    - net-tools
+    - unzip
+    - wget
+
+
