@@ -3,6 +3,14 @@
   selinux:
     state: "{{ selinux_state }}"
 
+- name: Disable IPTables
+  service:
+    name: "{{ item }}"
+    state: stopped
+    enabled: no
+  with_items:
+    - firewalld
+
 - name: Install common packages
   package:
     name:   "{{ item }}"
